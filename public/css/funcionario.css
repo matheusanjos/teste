@@ -1,0 +1,17 @@
+#buttoncadastro{
+    background-color: white;
+    color: #3c5baa;
+
+}
+
+#buttoncadastro:hover{
+    background-color: #3c5baa;
+    color: white;
+}
+
+.alert { width: 250px; }
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,12 @@
+#buttoncadastro{
+    background-color: white;
+    color: #3c5baa;
+    margin-top: 3.3%;
+
+}
+
+#buttoncadastro:hover{
+    background-color: #3c5baa;
+    color: white;
+}
+
