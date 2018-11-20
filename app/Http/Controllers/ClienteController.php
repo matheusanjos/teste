@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use App\Cliente;
 use App\Software;
 use App\ClienteSoftware;
+use App\Syspdv;
 
 class ClienteController extends Controller
 {
@@ -59,6 +60,16 @@ class ClienteController extends Controller
         $cliente_software->software_id = $request->input('software');
 
         $cliente_software->save();
+
+        if($request->input('software') == 1){
+            $software = new Syspdv();
+            $software->cliente_software_id = $cliente_software->id;
+            $software->controle = $request->input('controle');
+            $software->versao = $request->input('versao');
+            $software->serie = $request->input('serie');
+
+            $software->save();
+        }
 
         return redirect('/cadastro/cliente')->with('alert', 'Cliente Cadastrado!');
     }

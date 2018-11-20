@@ -52,7 +52,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group {{ $errors->has('nome_fantasia') ? 'has-error' : '' }}">
                                 <label for="nome_fantasia"><strong>* Nome Fantasia</strong></label>
-                                <input placeholder="Nome Fantasia" type="text" class="form-control" name="nome_fantasia" value="{{ old('nome_fantasia') }}">
+                                <input placeholder="Nome Fantasia" type="text" class="form-control" name="nome_fantasia" value="{{ old('nome_fantasia') }}" >
                                 <span class="text-danger">{{ $errors->first('nome_fantasia') }}</span>
                             </div>
                         </div>
@@ -61,13 +61,13 @@
                             <div class="form-row">
                                 <div class="form-group col-lg-8 col-md-8 col-sm-12 col-xs-12 {{ $errors->has('razao_social') ? 'has-error' : '' }}">
                                     <label for="razao_social"><strong>* Razão Social</strong></label>
-                                    <input placeholder="Razão Social" type="text" class="form-control" name="razao_social" value="{{ old('razao_social') }}">
+                                    <input placeholder="Razão Social" type="text" class="form-control" name="razao_social" value="{{ old('razao_social') }}" >
                                     <span class="text-danger">{{ $errors->first('razao_social') }}</span>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-6 {{ $errors->has('cnpj') ? 'has-error' : '' }}">
                                     <label for="cnpj"><strong>* CNPJ</strong></label>
-                                    <input placeholder="CNPJ" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" maxlength="18" onkeydown="javascript: fMasc( this, mCNPJ );">
+                                    <input placeholder="CNPJ" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" maxlength="18" onkeydown="javascript: fMasc( this, mCNPJ );" >
                                     <span class="text-danger">{{ $errors->first('cnpj') }}</span>
                                 </div>
                             </div>
@@ -89,13 +89,13 @@
                             <div class="form-row">
                                 <div class="form-group col-lg-8 col-md-12 col-sm-12 col-xs-12 {{ $errors->has('email') ? 'has-error' : '' }}">
                                     <label for="email"><strong>* E-mail</strong></label>
-                                    <input placeholder="E-mail" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                    <input placeholder="E-mail" type="email" class="form-control" name="email" value="{{ old('email') }}" >
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-6 {{ $errors->has('telefone') ? 'has-error' : '' }}">
                                     <label for="telefone"><strong>* Telefone</strong></label>
-                                    <input placeholder="Telefone" type="text" class="form-control" name="telefone" value="{{ old('telefone') }}" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+                                    <input placeholder="Telefone" type="text" class="form-control" name="telefone" value="{{ old('telefone') }}" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" >
                                     <span class="text-danger">{{ $errors->first('telefone') }}</span>
                                     <br>
                                 </div>
@@ -109,7 +109,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
                             <div class="form-group {{ $errors->has('software') ? 'has-error' : '' }}">
                                 <label for="software"><strong>* Software</strong></label>
-                                <select name="software" class="form-control">
+                                <select id="software" name="software" class="form-control" onchange="fun_showtextbox()">
                                     <option disabled selected>Selecione</option>
                                     @foreach($softs as $s)
                                     <option value="{{ $s->id }}">{{ $s->nome_software }}</option>
@@ -119,7 +119,7 @@
                             </div>
                         </div>
 
-                        <div id="syspdv" class="col-12">
+                        <div id="syspdv" class="col-12" style="display: none;" >
                             <div class="form-row">
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12 {{ $errors->has('controle') ? 'has-error' : '' }}">
                                     <label for="controle"><strong>* Controle</strong></label>
@@ -135,15 +135,15 @@
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12 {{ $errors->has('serie') ? 'has-error' : '' }}">
                                     <label for="serie"><strong>* Série</strong></label>
-                                    <input placeholder="Série" type="text" class="form-control" name="serie" value="{{ old('serie') }}" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+                                    <input placeholder="Série" type="text" class="form-control" name="serie" value="{{ old('serie') }}">
                                     <span class="text-danger">{{ $errors->first('serie') }}</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="acsn" class="col-12">
+                        <div id="acsn" class="col-12" style="display: none;" >
                             <div class="form-row">
-                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 {{ $errors->has('contrato') ? 'has-error' : '' }}">
                                     <label for="contrato"><strong>* Contrato</strong></label>
                                     <input placeholder="Contrato" type="text" class="form-control" name="contrato" value="{{ old('contrato') }}">
                                     <span class="text-danger">{{ $errors->first('contrato') }}</span>
@@ -151,7 +151,7 @@
                             </div>
                         </div>
 
-                        <div id="ecletica" class="col-12">
+                        <div id="ecletica" class="col-12" style="display: none;" >
                             <div class="form-row">
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 {{ $errors->has('cod_rede') ? 'has-error' : '' }}">
                                     <label for="cod_rede"><strong>* Código da Rede</strong></label>
