@@ -109,10 +109,10 @@
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
                             <div class="form-group {{ $errors->has('software') ? 'has-error' : '' }}">
                                 <label for="software"><strong>* Software</strong></label>
-                                <select id="software" name="software" class="form-control" onchange="fun_showtextbox()">
-                                    <option disabled selected>Selecione</option>
+                                <select id="software" name="software" class="form-control" value="{{ old('software') }}">
+                                    <option>Selecione</option>
                                     @foreach($softs as $s)
-                                    <option value="{{ $s->id }}">{{ $s->nome_software }}</option>
+                                        <option value="{{ $s->id }}">{{ $s->nome_software }}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger">{{ $errors->first('software') }}</span>

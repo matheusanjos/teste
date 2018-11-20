@@ -9,6 +9,8 @@ use App\Cliente;
 use App\Software;
 use App\ClienteSoftware;
 use App\Syspdv;
+use App\Acsn;
+use App\Ecletica;
 
 class ClienteController extends Controller
 {
@@ -67,6 +69,23 @@ class ClienteController extends Controller
             $software->controle = $request->input('controle');
             $software->versao = $request->input('versao');
             $software->serie = $request->input('serie');
+
+            $software->save();
+        }
+
+        else if($request->input('software') == 2){
+            $software = new Acsn();
+            $software->cliente_software_id = $cliente_software->id;
+            $software->contrato = $request->input('contrato');
+
+            $software->save();
+        }
+
+        else if($request->input('software') == 3){
+            $software = new Ecletica();
+            $software->cliente_software_id = $cliente_software->id;
+            $software->cod_rede = $request->input('cod_rede');
+            $software->cod_loja = $request->input('cod_loja');
 
             $software->save();
         }
